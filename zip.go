@@ -123,6 +123,7 @@ func zipFile(w *zip.Writer, source string) error {
 			}
 		}
 
+		header.Modified = info.ModTime()
 		writer, err := w.CreateHeader(header)
 		if err != nil {
 			return fmt.Errorf("%s: making header: %v", fpath, err)
